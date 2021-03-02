@@ -1,0 +1,71 @@
+:root {
+    --grid-cols: 5;
+    --grid-rows: var(--grid-cols);
+    --z-index: -10000px;
+}
+
+body {
+    overflow: hidden;
+}
+
+#ship {
+    position: absolute;
+}
+
+#startGameBtn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    background-color: #ff0000;
+    cursor: pointer;
+    text-align: center;
+}
+
+#startGameBtn:hover {
+    background: #aa2333;
+    color: white;
+}
+
+#startGameBtn:active {
+    background: #aa2333;
+}
+
+#player {
+    position: absolute;
+    top: calc(50% - 1px);
+    left: calc(50% - 1px);
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: blue;
+}
+
+#grid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    perspective: 50px;
+    display: grid;
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+    grid-gap: 10px;
+}
+  
+.block {
+    width: 80px;
+    height: 80px;
+    background-color: rgba(229, 229, 229, 0.5);
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    padding: 0.25em;
+    transform: translateZ(var(--z-index));
+    /* transform: translateZ(var(--z-index)px); */
+}
+
+/* .item-1a, .item-2b, .item-3c, .item-4d, .item-5e {
+    transform: translateZ(20px);
+} */
