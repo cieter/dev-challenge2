@@ -23,6 +23,7 @@ body {
     background-color: #ff0000;
     cursor: pointer;
     text-align: center;
+    z-index: 999;
 }
 
 #startGameBtn:hover {
@@ -34,14 +35,56 @@ body {
     background: #aa2333;
 }
 
+#playerBox {
+    position: absolute;
+    perspective: 1200px;
+    z-index: 999;
+}
+
 #player {
     position: absolute;
-    top: calc(50% - 1px);
-    left: calc(50% - 1px);
-    transform: translate(-50%, -50%);
+    /* top: calc(50%); */
+    top: calc(100vh/2);
+    /* left: calc(50%); */
+    left: calc(100vw/2);
+    transform: translate(-50%, -50%, -200px);
     width: 40px;
     height: 40px;
-    background: blue;
+    /* background: blue; */
+    transform-style: preserve-3d;
+    transform-origin: center;
+}
+
+.playerFace {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+}
+
+.playerFace-front {
+    transform: rotateY(0deg) translateZ(20px);
+    background-color: rgba(0, 0, 255, 1);
+}
+.playerFace-back {
+    transform: rotateY(180deg) translateZ(20px);
+    background-color:rgba(137, 43, 226, 1);
+}
+.playerFace-top {
+    transform: rotateX(90deg) translateZ(20px);
+    background-color: rgba(95, 158, 160, 1);
+}
+.playerFace-bottom {
+    transform: rotateX(-90deg) translateZ(20px);
+    background-color: rgba(220, 20, 60, 1);
+}
+.playerFace-left {
+    transform: rotateY(-90deg) translateZ(20px);
+    background-color: rgba(0, 100, 0, 1);
+}
+.playerFace-right {
+    transform: rotateY(90deg) translateZ(20px);
+    background-color: rgba(255, 140, 0, 1);
 }
 
 #grid {
@@ -49,21 +92,52 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    perspective: 50px;
+    perspective: 500px;
     display: grid;
     grid-template-columns: repeat(var(--grid-cols), 1fr);
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-gap: 10px;
+    transform-style: preserve-3d;
 }
   
 .block {
     width: 80px;
     height: 80px;
-    background-color: rgba(229, 229, 229, 0.5);
-    border: 1px solid rgba(128, 128, 128, 0.5);
     padding: 0.25em;
     transform: translateZ(var(--z-index));
-    /* transform: translateZ(var(--z-index)px); */
+    transform-style: preserve-3d;
+}
+
+.blockFace {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+}
+
+.blockFace-front {
+    transform: rotateY(0deg) translateZ(45px); 
+    background-color: rgba(252, 8, 8, 1);
+}
+.blockFace-back {
+    transform: rotateY(180deg) translateZ(45px);
+    background-color: rgba(177, 253, 0, 1);
+}
+.blockFace-top {
+    transform: rotateX(90deg) translateZ(45px);
+    background-color: rgba(0, 253, 240, 1);
+}
+.blockFace-bottom {
+    transform: rotateX(-90deg) translateZ(45px);
+    background-color: rgba(160, 0, 253, 1);
+}
+.blockFace-left {
+    transform: rotateY(-90deg) translateZ(45px);
+    background-color: rgba(30, 253, 0, 1);
+}
+.blockFace-right {
+    transform: rotateY(90deg) translateZ(45px);
+    background-color: rgba(255, 0, 212, 1);
 }
 
 /* .item-1a, .item-2b, .item-3c, .item-4d, .item-5e {
